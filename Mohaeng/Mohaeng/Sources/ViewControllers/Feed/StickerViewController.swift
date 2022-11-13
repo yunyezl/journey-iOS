@@ -89,6 +89,7 @@ extension StickerViewController {
         FeedAPI.shared.postEmoji(emojiId: emojiId, postId: postId) { response in
             switch response {
             case .success:
+                StickerMemoryRepository().clickEmoji(postId: postId, emojiId: emojiId)
                 self.dismiss(animated: false) {
                     self.postNotification()
                 }
